@@ -1,0 +1,30 @@
+package com.kalavidara.balaga.data.model
+
+data class Troupe(
+    val id: Int,
+    val name: String,
+    val artForm: String,
+    val emoji: String,
+    val district: String,
+    val serviceArea: String,
+    val leadContact: String,
+    val phone: String,
+    val memberCount: Int,
+    val rating: Float,
+    val totalEvents: Int,
+    val description: String,
+    val equipment: List<String>,
+    val galleryEmojis: List<String>,   // Replace with image URLs when using Firebase
+    val isAvailable: Boolean = true,
+    val isFeatured: Boolean = false,
+)
+
+data class BookingRequest(
+    val customerName: String,
+    val eventType: String,
+    val eventDate: String,
+    val location: String,
+    val contactNumber: String,
+    val message: String,
+    val troupeId: Int,
+)

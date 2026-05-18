@@ -1,0 +1,141 @@
+package com.kalavidara.balaga.data
+
+import com.kalavidara.balaga.data.model.Troupe
+
+object SampleData {
+
+    val troupes = listOf(
+        Troupe(
+            id = 0,
+            name = "Sri Veerabhadra Dollu Kunitha",
+            artForm = "Dollu Kunitha",
+            emoji = "🥁",
+            district = "Tumkur",
+            serviceArea = "Central Karnataka",
+            leadContact = "Raju Gowda",
+            phone = "+91 98450 12345",
+            memberCount = 12,
+            rating = 4.9f,
+            totalEvents = 87,
+            description = "Award-winning troupe with 20+ years of performance experience at Dasara, weddings, and corporate events. Known for energetic synchronized drum formations, colourful costumes, and high-energy choreography.",
+            equipment = listOf(
+                "12 Dollu drums (various sizes)",
+                "Traditional ceremonial costumes for 12 members",
+                "Own sound system (3000W)",
+                "Decorative lighting setup",
+                "Transport vehicle"
+            ),
+            galleryEmojis = listOf("🥁","🎭","🏆","🎪","🎶","🌟"),
+            isFeatured = true,
+        ),
+        Troupe(
+            id = 1,
+            name = "Amba Shakti Seva Mandali",
+            artForm = "Pooja Kunitha",
+            emoji = "🕯️",
+            district = "Mysuru",
+            serviceArea = "South Karnataka",
+            leadContact = "Smt. Lakshmi Devi",
+            phone = "+91 94482 67890",
+            memberCount = 8,
+            rating = 4.8f,
+            totalEvents = 64,
+            description = "Renowned all-women troupe performing devotional Pooja Kunitha with sacred lamps, dedicated to Goddess Amba. Brings spiritual energy to temple festivals and religious functions.",
+            equipment = listOf(
+                "Sacred brass lamps (20 units)",
+                "Traditional costumes & jewellery",
+                "Puja accessories & flower decorations",
+                "Portable devotional music system"
+            ),
+            galleryEmojis = listOf("🕯️","🙏","🌸","🏛️","💛","✨"),
+        ),
+        Troupe(
+            id = 2,
+            name = "Dakshina Ranga Yakshagana",
+            artForm = "Yakshagana",
+            emoji = "🎪",
+            district = "Dakshina Kannada",
+            serviceArea = "Coastal Karnataka",
+            leadContact = "Sri Subramanya Bhat",
+            phone = "+91 97311 54321",
+            memberCount = 20,
+            rating = 4.7f,
+            totalEvents = 120,
+            description = "Premier Yakshagana Bayalata troupe from coastal Karnataka performing epics from Mahabharata and Ramayana with elaborate costumes and classical music for over 3 decades.",
+            equipment = listOf(
+                "Full costume set (20 characters)",
+                "Traditional Chende & Maddale drums",
+                "Stage lighting rig",
+                "Makeup studio kit",
+                "Generator & sound system"
+            ),
+            galleryEmojis = listOf("🎪","🎭","🏆","🎨","🎶","🌟"),
+        ),
+        Troupe(
+            id = 3,
+            name = "Mahadeva Kamsale Troupe",
+            artForm = "Kamsale",
+            emoji = "🔔",
+            district = "Hassan",
+            serviceArea = "South Karnataka",
+            leadContact = "Thimmaiah",
+            phone = "+91 96201 88765",
+            memberCount = 10,
+            rating = 4.6f,
+            totalEvents = 45,
+            description = "Devotees of Lord Mahadeva performing the ancient Kamsale art — ritual dance with bronze cymbals. Their trance-like performances during Shivaratri and Jatras express Karnataka's Shaivite traditions.",
+            equipment = listOf(
+                "20 Kamsale (bronze cymbals)",
+                "Traditional saffron robes",
+                "Ritual accessories",
+                "Portable sound system"
+            ),
+            galleryEmojis = listOf("🔔","🕉️","🏛️","🙏","✨","🎶"),
+        ),
+        Troupe(
+            id = 4,
+            name = "Nandi Veerangana Goravara",
+            artForm = "Goravara Kunitha",
+            emoji = "🐂",
+            district = "Belagavi",
+            serviceArea = "North Karnataka",
+            leadContact = "Basavraj Nayak",
+            phone = "+91 99001 23456",
+            memberCount = 15,
+            rating = 4.5f,
+            totalEvents = 38,
+            description = "Traditional Goravara Kunitha troupe from North Karnataka performing the sacred art of Nandi worship with decorated bulls and energetic dance routines.",
+            equipment = listOf(
+                "2 trained performance bulls",
+                "Decorative bull ornaments & garlands",
+                "Traditional costumes for 15 artists",
+                "Percussion instruments set"
+            ),
+            galleryEmojis = listOf("🐂","🎭","🌺","🥁","🏆","🎪"),
+        ),
+        Troupe(
+            id = 5,
+            name = "Bengaluru Janapada Sangha",
+            artForm = "Dollu Kunitha",
+            emoji = "🥁",
+            district = "Bengaluru",
+            serviceArea = "Bengaluru Urban",
+            leadContact = "Venkatesh Murthy",
+            phone = "+91 80001 99000",
+            memberCount = 18,
+            rating = 4.8f,
+            totalEvents = 95,
+            description = "Bengaluru's most sought-after Dollu Kunitha troupe, performing at corporate events, IT parks, and city festivals. Blends traditional art with modern stage management.",
+            equipment = listOf(
+                "18 Dollu drums",
+                "LED costume lighting",
+                "Professional sound system (5000W)",
+                "Branded stage backdrop"
+            ),
+            galleryEmojis = listOf("🥁","🌆","🎭","🏆","🎶","⭐"),
+        ),
+    )
+
+    val artForms = listOf("All", "Dollu Kunitha", "Pooja Kunitha", "Goravara Kunitha", "Yakshagana", "Kamsale")
+    val districts = listOf("All", "Tumkur", "Mysuru", "Dakshina Kannada", "Hassan", "Belagavi", "Bengaluru")
+}
