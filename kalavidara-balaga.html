@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalavidara-Balaga – Folk Artist Talent Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Tiro+Kannada&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --saffron: #E8651A;
+  --deep-red: #B5181B;
+  --gold: #F4A623;
+  --turmeric: #F0C040;
+  --forest: #1A6B3C;
+  --deep-forest: #0D4326;
+  --cream: #FDF5E6;
+  --warm-white: #FFFBF4;
+  --dark: #1A0A00;
+  --ink: #2C1810;
+  --muted: #7A5C4A;
+  --card-bg: #FFFAF2;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--warm-white);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SCREEN SYSTEM */
+.screen { display: none; min-height: 100vh; }
+.screen.active { display: flex; flex-direction: column; }
+
+/* SPLASH */
+#splash {
+  background: radial-gradient(ellipse at 30% 40%, #B5181B 0%, #6B0C0C 40%, #1A0A00 100%);
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+#splash::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(60deg, transparent, transparent 30px, rgba(244,166,35,0.07) 30px, rgba(244,166,35,0.07) 31px),
+    repeating-linear-gradient(-60deg, transparent, transparent 30px, rgba(244,166,35,0.07) 30px, rgba(244,166,35,0.07) 31px);
+}
+.splash-content { text-align: center; z-index: 1; animation: splashIn 0.8s ease-out; }
+@keyframes splashIn { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
+.splash-lotus { font-size: 64px; margin-bottom: 16px; display: block; animation: float 3s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+.splash-title {
+  font-family: 'Yatra One', cursive;
+  font-size: 38px; color: var(--gold);
+  text-shadow: 0 0 40px rgba(244,166,35,0.5);
+  line-height: 1.1; letter-spacing: 1px;
+}
+.splash-sub { color: rgba(255,220,150,0.8); font-size: 14px; margin-top: 8px; letter-spacing: 3px; text-transform: uppercase; }
+.splash-tagline { color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 24px; }
+.splash-btn {
+  margin-top: 48px;
+  background: var(--gold);
+  color: var(--dark); font-weight: 600; font-size: 15px;
+  border: none; padding: 14px 40px; border-radius: 50px;
+  cursor: pointer; letter-spacing: 1px;
+  box-shadow: 0 8px 30px rgba(244,166,35,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.splash-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(244,166,35,0.5); }
+
+/* TOP BAR */
+.topbar {
+  background: var(--deep-red);
+  padding: 12px 16px;
+  display: flex; align-items: center; gap: 12px;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.topbar-back {
+  background: rgba(255,255,255,0.15); border: none;
+  color: white; width: 34px; height: 34px;
+  border-radius: 50%; cursor: pointer; font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.topbar-title { font-family: 'Yatra One', cursive; color: var(--gold); font-size: 20px; flex: 1; }
+.topbar-logo { font-size: 22px; }
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: white;
+  border-top: 1px solid #E8D5B7;
+  display: flex; z-index: 100;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+}
+.nav-item {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 3px; padding: 10px 4px;
+  cursor: pointer; border: none; background: none;
+  transition: color 0.2s;
+  color: var(--muted); font-size: 10px; font-weight: 500;
+}
+.nav-item.active { color: var(--deep-red); }
+.nav-item .nav-icon { font-size: 20px; }
+
+/* PAGE CONTENT WRAPPER */
+.page-content { flex: 1; overflow-y: auto; padding-bottom: 70px; }
+
+/* HOME SCREEN */
+.home-hero {
+  background: linear-gradient(135deg, #B5181B 0%, #6B0C0C 60%, #2C0A00 100%);
+  padding: 20px 16px 32px;
+  position: relative; overflow: hidden;
+}
+.home-hero::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; right: 0; height: 24px;
+  background: var(--warm-white);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.hero-pattern {
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(244,166,35,0.05) 20px, rgba(244,166,35,0.05) 21px);
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-greeting { color: rgba(255,220,150,0.7); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+.hero-name { font-family: 'Yatra One', cursive; color: var(--gold); font-size: 28px; margin-top: 2px; }
+.hero-tagline { color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 4px; }
+
+.search-bar {
+  margin-top: 20px;
+  background: white; border-radius: 14px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.search-bar input {
+  flex: 1; border: none; outline: none;
+  font-size: 14px; color: var(--ink); background: transparent;
+  font-family: 'DM Sans', sans-serif;
+}
+.search-bar input::placeholder { color: #BBA895; }
+.search-icon { color: var(--deep-red); font-size: 18px; }
+
+/* SECTION */
+.section { padding: 20px 16px 0; }
+.section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.section-title { font-family: 'Yatra One', cursive; font-size: 18px; color: var(--ink); }
+.see-all { color: var(--deep-red); font-size: 13px; font-weight: 500; cursor: pointer; border: none; background: none; }
+
+/* CATEGORY CHIPS */
+.categories-scroll { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; }
+.categories-scroll::-webkit-scrollbar { display: none; }
+.cat-card {
+  flex-shrink: 0; display: flex; flex-direction: column;
+  align-items: center; gap: 8px;
+  background: white; border-radius: 16px;
+  padding: 14px 16px; width: 100px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  cursor: pointer; border: 2px solid transparent;
+  transition: all 0.2s;
+}
+.cat-card:hover, .cat-card.active {
+  border-color: var(--saffron);
+  box-shadow: 0 4px 16px rgba(232,101,26,0.2);
+}
+.cat-icon { font-size: 28px; }
+.cat-name { font-size: 11px; font-weight: 600; color: var(--ink); text-align: center; line-height: 1.2; }
+
+/* FEATURED TROUPE CARD */
+.featured-card {
+  background: linear-gradient(135deg, #1A6B3C, #0D4326);
+  border-radius: 20px; padding: 20px;
+  position: relative; overflow: hidden;
+  cursor: pointer; margin-bottom: 12px;
+  box-shadow: 0 6px 24px rgba(26,107,60,0.3);
+  transition: transform 0.2s;
+}
+.featured-card:hover { transform: translateY(-2px); }
+.featured-badge {
+  position: absolute; top: 14px; right: 14px;
+  background: var(--gold); color: var(--dark);
+  font-size: 10px; font-weight: 700; padding: 4px 10px;
+  border-radius: 20px; letter-spacing: 1px; text-transform: uppercase;
+}
+.featured-art { font-size: 11px; color: rgba(255,220,150,0.7); text-transform: uppercase; letter-spacing: 2px; }
+.featured-name { font-family: 'Yatra One', cursive; color: var(--gold); font-size: 22px; margin-top: 4px; }
+.featured-loc { color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 4px; }
+.featured-desc { color: rgba(255,255,255,0.75); font-size: 13px; margin-top: 10px; line-height: 1.5; }
+.featured-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
+.featured-rating { display: flex; align-items: center; gap: 4px; color: var(--gold); font-size: 14px; font-weight: 600; }
+.featured-btn {
+  background: var(--gold); color: var(--dark);
+  border: none; padding: 8px 18px; border-radius: 20px;
+  font-weight: 600; font-size: 13px; cursor: pointer;
+}
+
+/* TROUPE MINI CARD */
+.troupes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.troupe-card {
+  background: white; border-radius: 16px;
+  overflow: hidden; cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #F0E4D0;
+}
+.troupe-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+.troupe-img {
+  height: 100px; background: linear-gradient(135deg, #B5181B, #E8651A);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px; position: relative;
+}
+.troupe-img.g2 { background: linear-gradient(135deg, #1A6B3C, #2A9D60); }
+.troupe-img.g3 { background: linear-gradient(135deg, #6B0C5E, #B5218A); }
+.troupe-img.g4 { background: linear-gradient(135deg, #0C3B6B, #1A6BB5); }
+.troupe-body { padding: 10px 12px 12px; }
+.troupe-art { font-size: 10px; color: var(--saffron); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.troupe-name { font-family: 'Yatra One', cursive; font-size: 14px; color: var(--ink); margin-top: 2px; line-height: 1.2; }
+.troupe-dist { font-size: 11px; color: var(--muted); margin-top: 3px; }
+.troupe-stars { font-size: 11px; color: var(--gold); margin-top: 4px; }
+
+/* SEARCH SCREEN */
+.filter-row { display: flex; gap: 8px; padding: 12px 16px; overflow-x: auto; }
+.filter-row::-webkit-scrollbar { display: none; }
+.filter-chip {
+  flex-shrink: 0; padding: 7px 14px; border-radius: 20px;
+  border: 1.5px solid #E0C9A8; background: white;
+  font-size: 12px; font-weight: 500; cursor: pointer; color: var(--muted);
+  transition: all 0.2s; white-space: nowrap;
+}
+.filter-chip.active { background: var(--deep-red); border-color: var(--deep-red); color: white; }
+.results-list { padding: 8px 16px; display: flex; flex-direction: column; gap: 12px; }
+.result-card {
+  background: white; border-radius: 16px;
+  display: flex; gap: 14px; padding: 14px;
+  cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid #F0E4D0; transition: box-shadow 0.2s;
+}
+.result-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+.result-avatar {
+  width: 64px; height: 64px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; flex-shrink: 0;
+}
+.result-info { flex: 1; }
+.result-art { font-size: 10px; color: var(--saffron); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.result-name { font-family: 'Yatra One', cursive; font-size: 16px; color: var(--ink); margin-top: 2px; }
+.result-meta { display: flex; gap: 10px; margin-top: 4px; }
+.result-tag { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 3px; }
+.result-stars { font-size: 12px; color: var(--gold); margin-top: 5px; }
+
+/* PROFILE SCREEN */
+.profile-hero {
+  background: linear-gradient(160deg, #B5181B 0%, #6B0C0C 100%);
+  padding: 0 0 24px;
+  position: relative;
+}
+.profile-cover {
+  height: 180px; display: flex; align-items: center; justify-content: center;
+  font-size: 80px;
+  background: linear-gradient(135deg, rgba(181,24,27,0.5), rgba(107,12,12,0.5));
+}
+.profile-meta { padding: 0 16px; margin-top: -30px; position: relative; z-index: 2; }
+.profile-avatar {
+  width: 80px; height: 80px; border-radius: 20px;
+  background: linear-gradient(135deg, #1A6B3C, #2A9D60);
+  border: 4px solid white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.profile-name { font-family: 'Yatra One', cursive; color: white; font-size: 24px; margin-top: 10px; }
+.profile-art-badge {
+  display: inline-block; background: var(--gold); color: var(--dark);
+  font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 20px;
+  margin-top: 6px; letter-spacing: 1px;
+}
+.profile-body { padding: 20px 16px; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.info-item { background: white; border-radius: 12px; padding: 12px; border: 1px solid #F0E4D0; }
+.info-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+.info-val { font-size: 14px; font-weight: 600; color: var(--ink); margin-top: 3px; }
+
+.profile-section-title {
+  font-family: 'Yatra One', cursive; font-size: 17px; color: var(--ink);
+  margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+.profile-desc { font-size: 14px; line-height: 1.7; color: #5A3D2B; margin-bottom: 20px; }
+
+/* GALLERY */
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 20px; }
+.gallery-item {
+  border-radius: 10px; overflow: hidden;
+  aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+  font-size: 28px; cursor: pointer;
+  transition: transform 0.2s;
+}
+.gallery-item:hover { transform: scale(1.04); }
+.gallery-item:nth-child(1) { grid-row: span 2; aspect-ratio: auto; height: 140px; font-size: 40px; }
+
+/* EQUIPMENT */
+.equip-box {
+  background: linear-gradient(135deg, #FFF8E8, #FFF0CC);
+  border: 1.5px solid var(--turmeric); border-radius: 14px;
+  padding: 14px 16px; margin-bottom: 20px;
+}
+.equip-item { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px; color: var(--ink); }
+.equip-item::before { content: '🥁'; font-size: 16px; }
+
+/* ACTION BUTTONS */
+.action-row { display: flex; gap: 10px; margin-bottom: 20px; }
+.btn-book {
+  flex: 2; background: var(--deep-red); color: white;
+  border: none; padding: 14px; border-radius: 14px;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: background 0.2s;
+}
+.btn-book:hover { background: #8A1012; }
+.btn-call {
+  flex: 1; background: var(--forest); color: white;
+  border: none; padding: 14px; border-radius: 14px;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  transition: background 0.2s;
+}
+.btn-call:hover { background: var(--deep-forest); }
+
+/* BOOKING SCREEN */
+.booking-hero {
+  background: linear-gradient(135deg, #B5181B, #6B0C0C);
+  padding: 20px 16px;
+}
+.booking-hero-title { font-family: 'Yatra One', cursive; color: var(--gold); font-size: 22px; }
+.booking-hero-sub { color: rgba(255,220,150,0.7); font-size: 13px; margin-top: 4px; }
+.booking-form { padding: 20px 16px; display: flex; flex-direction: column; gap: 14px; }
+.field-group { display: flex; flex-direction: column; gap: 6px; }
+.field-label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+.field-input, .field-select, .field-textarea {
+  background: white; border: 1.5px solid #E0C9A8;
+  border-radius: 12px; padding: 12px 14px;
+  font-size: 14px; color: var(--ink); outline: none;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.2s;
+}
+.field-input:focus, .field-select:focus, .field-textarea:focus { border-color: var(--deep-red); }
+.field-textarea { resize: none; height: 90px; }
+.submit-btn {
+  background: var(--deep-red); color: white;
+  border: none; padding: 16px; border-radius: 14px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  letter-spacing: 0.5px; transition: background 0.2s;
+  margin-top: 4px;
+}
+.submit-btn:hover { background: #8A1012; }
+
+/* SUCCESS STATE */
+.success-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.success-overlay.show { opacity: 1; pointer-events: all; }
+.success-card {
+  background: white; border-radius: 24px;
+  padding: 32px 28px; text-align: center; max-width: 300px;
+  animation: popIn 0.4s ease-out;
+}
+@keyframes popIn { from{transform:scale(0.8);opacity:0} to{transform:scale(1);opacity:1} }
+.success-icon { font-size: 56px; }
+.success-title { font-family: 'Yatra One', cursive; font-size: 22px; color: var(--forest); margin-top: 12px; }
+.success-msg { color: var(--muted); font-size: 14px; margin-top: 8px; line-height: 1.5; }
+.success-close {
+  margin-top: 20px; background: var(--forest); color: white;
+  border: none; padding: 12px 32px; border-radius: 50px;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+}
+
+/* IMPACT SCREEN */
+.impact-hero {
+  background: linear-gradient(160deg, #0D4326, #1A6B3C);
+  padding: 24px 16px 40px; text-align: center; position: relative; overflow: hidden;
+}
+.impact-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-radial-gradient(circle at 50% 50%, transparent 20px, rgba(244,166,35,0.05) 21px, transparent 22px);
+}
+.impact-hero-icon { font-size: 56px; position: relative; }
+.impact-hero-title { font-family: 'Yatra One', cursive; color: var(--gold); font-size: 26px; margin-top: 12px; position: relative; }
+.impact-hero-sub { color: rgba(255,220,150,0.7); font-size: 13px; margin-top: 6px; position: relative; }
+
+.impact-cards { padding: 20px 16px; display: flex; flex-direction: column; gap: 14px; }
+.impact-card {
+  border-radius: 20px; padding: 20px;
+  position: relative; overflow: hidden;
+}
+.impact-card.cultural { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); border: 1.5px solid #FFB74D; }
+.impact-card.economy { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); border: 1.5px solid #66BB6A; }
+.impact-card.power { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); border: 1.5px solid #42A5F5; }
+.impact-icon { font-size: 36px; }
+.impact-card-title { font-family: 'Yatra One', cursive; font-size: 18px; color: var(--ink); margin-top: 10px; }
+.impact-card-desc { font-size: 13px; line-height: 1.7; color: #4A3728; margin-top: 8px; }
+.impact-stat {
+  display: inline-block; margin-top: 12px;
+  background: rgba(0,0,0,0.08); border-radius: 20px;
+  padding: 4px 14px; font-size: 12px; font-weight: 700; color: var(--ink);
+}
+
+.about-box {
+  margin: 0 16px 20px; background: white; border-radius: 20px;
+  padding: 20px; border: 1px solid #F0E4D0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.about-box-title { font-family: 'Yatra One', cursive; font-size: 16px; color: var(--deep-red); margin-bottom: 10px; }
+.about-art-tag { display: inline-block; background: var(--cream); border: 1px solid #E0C9A8; border-radius: 20px; padding: 4px 12px; font-size: 12px; color: var(--ink); margin: 3px; }
+
+/* LOADING */
+.loading-bar {
+  height: 3px; background: linear-gradient(90deg, var(--gold), var(--saffron));
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  animation: loadBar 1.5s ease-in-out infinite;
+}
+@keyframes loadBar { 0%{width:0%} 50%{width:70%} 100%{width:100%} }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--ink); color: white; padding: 10px 20px; border-radius: 20px;
+  font-size: 13px; z-index: 300; opacity: 0; transition: all 0.3s;
+  white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* BADGE */
+.availability-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #E8F5E9; color: #2E7D32; font-size: 11px; font-weight: 700;
+  padding: 4px 12px; border-radius: 20px; margin-top: 8px;
+}
+.availability-dot { width: 7px; height: 7px; background: #4CAF50; border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+/* Scrollbar */
+.page-content::-webkit-scrollbar { width: 4px; }
+.page-content::-webkit-scrollbar-track { background: transparent; }
+.page-content::-webkit-scrollbar-thumb { background: #D4B896; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div class="screen active" id="splash">
+  <div class="splash-content">
+    <span class="splash-lotus">🪷</span>
+    <div class="splash-title">Kalavidara<br>Balaga</div>
+    <div class="splash-sub">ಕಲಾವಿದರ ಬಳಗ</div>
+    <div class="splash-tagline">Folk Artist Talent Hub • Karnataka</div>
+    <button class="splash-btn" onclick="goHome()">ಪ್ರಾರಂಭಿಸಿ — Get Started</button>
+  </div>
+</div>
+
+<!-- HOME SCREEN -->
+<div class="screen" id="home-screen">
+  <div class="page-content">
+    <div class="home-hero">
+      <div class="hero-pattern"></div>
+      <div class="hero-content">
+        <div class="hero-greeting">🙏 ನಮಸ್ಕಾರ</div>
+        <div class="hero-name">Kalavidara-Balaga</div>
+        <div class="hero-tagline">Discover Karnataka's Folk Artists</div>
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search troupes, art forms, districts…" oninput="handleSearch(this.value)">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">🎨 Art Forms</div>
+      </div>
+      <div class="categories-scroll">
+        <div class="cat-card" onclick="filterByArt('All')">
+          <span class="cat-icon">🎭</span>
+          <span class="cat-name">All Forms</span>
+        </div>
+        <div class="cat-card" onclick="filterByArt('Dollu Kunitha')">
+          <span class="cat-icon">🥁</span>
+          <span class="cat-name">Dollu Kunitha</span>
+        </div>
+        <div class="cat-card" onclick="filterByArt('Pooja Kunitha')">
+          <span class="cat-icon">🕯️</span>
+          <span class="cat-name">Pooja Kunitha</span>
+        </div>
+        <div class="cat-card" onclick="filterByArt('Goravara Kunitha')">
+          <span class="cat-icon">🐂</span>
+          <span class="cat-name">Goravara Kunitha</span>
+        </div>
+        <div class="cat-card" onclick="filterByArt('Yakshagana')">
+          <span class="cat-icon">🎪</span>
+          <span class="cat-name">Yakshagana</span>
+        </div>
+        <div class="cat-card" onclick="filterByArt('Kamsale')">
+          <span class="cat-icon">🔔</span>
+          <span class="cat-name">Kamsale</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" style="margin-top:20px">
+      <div class="section-header">
+        <div class="section-title">⭐ Featured Troupe</div>
+      </div>
+      <div class="featured-card" onclick="openProfile(0)">
+        <div class="featured-badge">✨ Top Rated</div>
+        <div class="featured-art">Dollu Kunitha</div>
+        <div class="featured-name">Sri Veerabhadra Dollu Kunitha</div>
+        <div class="featured-loc">📍 Tumkur District · 12 members</div>
+        <div class="featured-desc">Award-winning troupe with 20+ years of performance experience. Specializes in energetic drum formations for weddings, Dasara, and corporate events.</div>
+        <div class="featured-footer">
+          <div class="featured-rating">⭐ 4.9 <span style="color:rgba(255,255,255,0.5);font-weight:400;font-size:12px">(87 events)</span></div>
+          <button class="featured-btn" onclick="event.stopPropagation();openProfile(0)">View Profile</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" style="margin-top:4px;padding-bottom:20px">
+      <div class="section-header">
+        <div class="section-title">🎶 All Troupes</div>
+        <button class="see-all" onclick="switchTab('search')">See All →</button>
+      </div>
+      <div class="troupes-grid">
+        <div class="troupe-card" onclick="openProfile(0)">
+          <div class="troupe-img">🥁</div>
+          <div class="troupe-body">
+            <div class="troupe-art">Dollu Kunitha</div>
+            <div class="troupe-name">Sri Veerabhadra</div>
+            <div class="troupe-dist">📍 Tumkur</div>
+            <div class="troupe-stars">⭐⭐⭐⭐⭐ 4.9</div>
+          </div>
+        </div>
+        <div class="troupe-card" onclick="openProfile(1)">
+          <div class="troupe-img g2">🕯️</div>
+          <div class="troupe-body">
+            <div class="troupe-art">Pooja Kunitha</div>
+            <div class="troupe-name">Amba Shakti Seve</div>
+            <div class="troupe-dist">📍 Mysuru</div>
+            <div class="troupe-stars">⭐⭐⭐⭐⭐ 4.8</div>
+          </div>
+        </div>
+        <div class="troupe-card" onclick="openProfile(2)">
+          <div class="troupe-img g3">🎪</div>
+          <div class="troupe-body">
+            <div class="troupe-art">Yakshagana</div>
+            <div class="troupe-name">Dakshina Ranga</div>
+            <div class="troupe-dist">📍 Dakshina Kannada</div>
+            <div class="troupe-stars">⭐⭐⭐⭐⭐ 4.7</div>
+          </div>
+        </div>
+        <div class="troupe-card" onclick="openProfile(3)">
+          <div class="troupe-img g4">🔔</div>
+          <div class="troupe-body">
+            <div class="troupe-art">Kamsale</div>
+            <div class="troupe-name">Mahadeva Kamsale</div>
+            <div class="troupe-dist">📍 Hassan</div>
+            <div class="troupe-stars">⭐⭐⭐⭐ 4.6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-nav" id="home-nav">
+    <button class="nav-item active" onclick="switchTab('home')"><span class="nav-icon">🏠</span>Home</button>
+    <button class="nav-item" onclick="switchTab('search')"><span class="nav-icon">🔍</span>Search</button>
+    <button class="nav-item" onclick="switchTab('impact')"><span class="nav-icon">🌿</span>Impact</button>
+  </div>
+</div>
+
+<!-- SEARCH SCREEN -->
+<div class="screen" id="search-screen">
+  <div class="topbar">
+    <span class="topbar-logo">🔍</span>
+    <span class="topbar-title">Find Artists</span>
+  </div>
+  <div style="padding:12px 16px;">
+    <div class="search-bar" style="margin-top:0;box-shadow:0 2px 10px rgba(0,0,0,0.08)">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Search artists or art forms…" oninput="filterResults(this.value)">
+    </div>
+  </div>
+  <div class="filter-row" id="district-filters">
+    <div class="filter-chip active" onclick="setDistrictFilter(this,'All')">All Districts</div>
+    <div class="filter-chip" onclick="setDistrictFilter(this,'Tumkur')">Tumkur</div>
+    <div class="filter-chip" onclick="setDistrictFilter(this,'Mysuru')">Mysuru</div>
+    <div class="filter-chip" onclick="setDistrictFilter(this,'Dakshina Kannada')">Dakshina Kannada</div>
+    <div class="filter-chip" onclick="setDistrictFilter(this,'Hassan')">Hassan</div>
+    <div class="filter-chip" onclick="setDistrictFilter(this,'Belagavi')">Belagavi</div>
+    <div class="filter-chip" onclick="setDistrictFilter(this,'Bengaluru')">Bengaluru</div>
+  </div>
+  <div class="filter-row" id="art-filters" style="padding-top:0">
+    <div class="filter-chip active" onclick="setArtFilter(this,'All')">All Art Forms</div>
+    <div class="filter-chip" onclick="setArtFilter(this,'Dollu Kunitha')">Dollu Kunitha</div>
+    <div class="filter-chip" onclick="setArtFilter(this,'Pooja Kunitha')">Pooja Kunitha</div>
+    <div class="filter-chip" onclick="setArtFilter(this,'Goravara Kunitha')">Goravara Kunitha</div>
+    <div class="filter-chip" onclick="setArtFilter(this,'Yakshagana')">Yakshagana</div>
+    <div class="filter-chip" onclick="setArtFilter(this,'Kamsale')">Kamsale</div>
+  </div>
+  <div class="page-content" style="padding-bottom:70px">
+    <div class="results-list" id="results-list"></div>
+  </div>
+  <div class="bottom-nav">
+    <button class="nav-item" onclick="switchTab('home')"><span class="nav-icon">🏠</span>Home</button>
+    <button class="nav-item active" onclick="switchTab('search')"><span class="nav-icon">🔍</span>Search</button>
+    <button class="nav-item" onclick="switchTab('impact')"><span class="nav-icon">🌿</span>Impact</button>
+  </div>
+</div>
+
+<!-- PROFILE SCREEN -->
+<div class="screen" id="profile-screen">
+  <div class="topbar">
+    <button class="topbar-back" id="profile-back">←</button>
+    <span class="topbar-title" id="profile-topbar-name">Artist Profile</span>
+  </div>
+  <div class="page-content">
+    <div class="profile-hero">
+      <div class="profile-cover" id="profile-cover">🥁</div>
+      <div class="profile-meta">
+        <div class="profile-avatar" id="profile-avatar">🥁</div>
+        <div class="profile-name" id="profile-name">Troupe Name</div>
+        <div class="profile-art-badge" id="profile-art">Art Form</div>
+        <div class="availability-badge"><div class="availability-dot"></div>Available for Booking</div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <div class="info-grid">
+        <div class="info-item"><div class="info-label">📍 District</div><div class="info-val" id="p-district">—</div></div>
+        <div class="info-item"><div class="info-label">🗺️ Service Area</div><div class="info-val" id="p-area">—</div></div>
+        <div class="info-item"><div class="info-label">👤 Lead Contact</div><div class="info-val" id="p-contact">—</div></div>
+        <div class="info-item"><div class="info-label">👥 Members</div><div class="info-val" id="p-members">—</div></div>
+      </div>
+      <div class="profile-desc" id="p-desc">Loading...</div>
+
+      <div class="action-row">
+        <button class="btn-book" onclick="openBooking()">📋 Book This Troupe</button>
+        <button class="btn-call" id="btn-call" onclick="callTroupe()">📞 Call</button>
+      </div>
+
+      <div class="profile-section-title">🖼️ Portfolio Gallery</div>
+      <div class="gallery-grid" id="p-gallery"></div>
+
+      <div class="profile-section-title" style="margin-top:20px">🥁 Equipment</div>
+      <div class="equip-box" id="p-equip"></div>
+
+      <div class="profile-section-title" style="margin-top:4px">⭐ Rating</div>
+      <div style="background:white;border-radius:14px;padding:14px;border:1px solid #F0E4D0;margin-bottom:20px">
+        <div style="font-size:32px;font-weight:700;color:var(--ink)" id="p-rating">4.9</div>
+        <div style="color:var(--gold);font-size:20px;margin-top:4px" id="p-stars">⭐⭐⭐⭐⭐</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px" id="p-events">Based on 87 events</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING SCREEN -->
+<div class="screen" id="booking-screen">
+  <div class="topbar">
+    <button class="topbar-back" id="booking-back">←</button>
+    <span class="topbar-title">Book Troupe</span>
+  </div>
+  <div class="page-content">
+    <div class="booking-hero">
+      <div style="font-size:36px">📋</div>
+      <div class="booking-hero-title">Booking Inquiry</div>
+      <div class="booking-hero-sub" id="booking-troupe-name">Send a booking request to the troupe</div>
+    </div>
+    <div class="booking-form">
+      <div class="field-group">
+        <label class="field-label">Your Name</label>
+        <input class="field-input" type="text" placeholder="e.g. Ramesh Kumar" id="b-name">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Event Type</label>
+        <select class="field-select" id="b-event">
+          <option value="">Select event type…</option>
+          <option>Wedding Ceremony</option>
+          <option>Religious Festival</option>
+          <option>Cultural Program</option>
+          <option>Corporate Event</option>
+          <option>Government Function</option>
+          <option>Private Party</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Event Date</label>
+        <input class="field-input" type="date" id="b-date">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Event Location</label>
+        <input class="field-input" type="text" placeholder="e.g. Vidhana Soudha, Bengaluru" id="b-location">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Your Contact Number</label>
+        <input class="field-input" type="tel" placeholder="e.g. +91 98765 43210" id="b-phone">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Message / Special Requirements</label>
+        <textarea class="field-textarea" placeholder="Describe your event, number of guests, duration needed, special requirements…" id="b-msg"></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitBooking()">🎉 Submit Booking Request</button>
+    </div>
+  </div>
+</div>
+
+<!-- IMPACT SCREEN -->
+<div class="screen" id="impact-screen">
+  <div class="topbar">
+    <span class="topbar-logo">🌿</span>
+    <span class="topbar-title">Our Impact</span>
+  </div>
+  <div class="page-content">
+    <div class="impact-hero">
+      <div class="impact-hero-icon">🎭</div>
+      <div class="impact-hero-title">Preserving Karnataka's Heritage</div>
+      <div class="impact-hero-sub">Connecting rural talent with urban opportunities</div>
+    </div>
+    <div class="impact-cards">
+      <div class="impact-card cultural">
+        <div class="impact-icon">🏛️</div>
+        <div class="impact-card-title">Cultural Preservation</div>
+        <div class="impact-card-desc">Many traditional folk art forms face the risk of dying out as younger generations seek urban employment. Kalavidara-Balaga makes folk arts <strong>financially viable</strong>, giving artists a reason to continue and teach their craft to the next generation.</div>
+        <span class="impact-stat">🎨 500+ Artists Registered</span>
+      </div>
+      <div class="impact-card economy">
+        <div class="impact-icon">💚</div>
+        <div class="impact-card-title">Creative Economy</div>
+        <div class="impact-card-desc">By connecting rural folk troupes with urban event managers, corporates, and city organizers, we help artists earn <strong>year-round income</strong> — not just during wedding and festival seasons.</div>
+        <span class="impact-stat">📈 3x More Bookings per Troupe</span>
+      </div>
+      <div class="impact-card power">
+        <div class="impact-icon">🌏</div>
+        <div class="impact-card-title">Cultural Soft Power</div>
+        <div class="impact-card-desc">Showcasing Karnataka's rich and diverse performance arts — from the thunderous Dollu Kunitha drums to the mystical Yakshagana theatre — as a source of pride and <strong>global cultural identity</strong>.</div>
+        <span class="impact-stat">🌍 Represented in 30 Districts</span>
+      </div>
+    </div>
+    <div class="about-box">
+      <div class="about-box-title">🎨 Art Forms We Support</div>
+      <div>
+        <span class="about-art-tag">🥁 Dollu Kunitha</span>
+        <span class="about-art-tag">🕯️ Pooja Kunitha</span>
+        <span class="about-art-tag">🐂 Goravara Kunitha</span>
+        <span class="about-art-tag">🎪 Yakshagana</span>
+        <span class="about-art-tag">🔔 Kamsale</span>
+        <span class="about-art-tag">💃 Kolata</span>
+        <span class="about-art-tag">🪘 Veeragase</span>
+        <span class="about-art-tag">🎵 Janapada</span>
+      </div>
+    </div>
+    <div style="height:16px"></div>
+  </div>
+  <div class="bottom-nav">
+    <button class="nav-item" onclick="switchTab('home')"><span class="nav-icon">🏠</span>Home</button>
+    <button class="nav-item" onclick="switchTab('search')"><span class="nav-icon">🔍</span>Search</button>
+    <button class="nav-item active" onclick="switchTab('impact')"><span class="nav-icon">🌿</span>Impact</button>
+  </div>
+</div>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="success-overlay">
+  <div class="success-card">
+    <div class="success-icon">🎉</div>
+    <div class="success-title">Booking Request Sent!</div>
+    <div class="success-msg">The troupe has been notified. They will contact you within 24 hours to confirm your booking.</div>
+    <button class="success-close" onclick="closeSuccess()">Done ✓</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+const troupes = [
+  {
+    name: "Sri Veerabhadra Dollu Kunitha",
+    art: "Dollu Kunitha",
+    emoji: "🥁",
+    gradClass: "",
+    district: "Tumkur",
+    area: "Central Karnataka",
+    contact: "Raju Gowda",
+    phone: "+91 98450 12345",
+    members: "12 Members",
+    rating: "4.9",
+    stars: "⭐⭐⭐⭐⭐",
+    events: "87 events",
+    desc: "Award-winning troupe with 20+ years of performance experience at Dasara, weddings, and corporate events. Known for energetic synchronized drum formations, colourful costumes, and high-energy choreography that leaves audiences spellbound.",
+    equipment: ["12 Dollu drums (various sizes)", "Traditional ceremonial costumes for 12 members", "Own sound system (3000W)", "Decorative lighting setup", "Transport vehicle"],
+    gallery: ["🥁","🎭","🏆","🎪","🎶","🌟"]
+  },
+  {
+    name: "Amba Shakti Seva Mandali",
+    art: "Pooja Kunitha",
+    emoji: "🕯️",
+    gradClass: "g2",
+    district: "Mysuru",
+    area: "South Karnataka",
+    contact: "Smt. Lakshmi Devi",
+    phone: "+91 94482 67890",
+    members: "8 Members",
+    rating: "4.8",
+    stars: "⭐⭐⭐⭐⭐",
+    events: "64 events",
+    desc: "Renowned for their devotional Pooja Kunitha performances dedicated to Goddess Amba. This all-women troupe performs with traditional lamps and sacred choreography, bringing spiritual energy to temple festivals and religious functions.",
+    equipment: ["Sacred brass lamps (20 units)", "Traditional costumes & jewellery", "Puja accessories & flower decorations", "Portable devotional music system"],
+    gallery: ["🕯️","🙏","🌸","🏛️","💛","✨"]
+  },
+  {
+    name: "Dakshina Ranga Yakshagana",
+    art: "Yakshagana",
+    emoji: "🎪",
+    gradClass: "g3",
+    district: "Dakshina Kannada",
+    area: "Coastal Karnataka",
+    contact: "Sri Subramanya Bhat",
+    phone: "+91 97311 54321",
+    members: "20 Members",
+    rating: "4.7",
+    stars: "⭐⭐⭐⭐⭐",
+    events: "120 events",
+    desc: "A premier Yakshagana Bayalata (outdoor theatre) troupe from coastal Karnataka. Performing epics from Mahabharata and Ramayana with elaborate costumes, classical music, and captivating dialogue for over 3 decades.",
+    equipment: ["Full Yakshagana costume set (20 characters)", "Traditional Chende & Maddale drums", "Stage lighting rig", "Makeup studio kit", "Generator & sound system"],
+    gallery: ["🎪","🎭","🏆","🎨","🎶","🌟"]
+  },
+  {
+    name: "Mahadeva Kamsale Troupe",
+    art: "Kamsale",
+    emoji: "🔔",
+    gradClass: "g4",
+    district: "Hassan",
+    area: "South Karnataka",
+    contact: "Thimmaiah",
+    phone: "+91 96201 88765",
+    members: "10 Members",
+    rating: "4.6",
+    stars: "⭐⭐⭐⭐",
+    events: "45 events",
+    desc: "Dedicated devotees of Lord Mahadeva performing the ancient Kamsale art — a ritual dance with bronze cymbals. Their trance-like performances during Shivaratri and Jatras are a powerful expression of devotion and Karnataka's Shaivite traditions.",
+    equipment: ["20 Kamsale (bronze cymbals)", "Traditional saffron robes", "Ritual accessories", "Portable sound system"],
+    gallery: ["🔔","🕉️","🏛️","🙏","✨","🎶"]
+  },
+  {
+    name: "Nandi Veerangana Goravara",
+    art: "Goravara Kunitha",
+    emoji: "🐂",
+    gradClass: "",
+    district: "Belagavi",
+    area: "North Karnataka",
+    contact: "Basavraj Nayak",
+    phone: "+91 99001 23456",
+    members: "15 Members",
+    rating: "4.5",
+    stars: "⭐⭐⭐⭐",
+    events: "38 events",
+    desc: "A traditional Goravara Kunitha troupe from North Karnataka, performing the sacred art of Nandi worship with decorated bulls, traditional attire, and energetic dance routines. A unique visual spectacle for Jatras and cultural events.",
+    equipment: ["2 trained performance bulls", "Decorative bull ornaments & garlands", "Traditional costumes for 15 artists", "Percussion instruments set"],
+    gallery: ["🐂","🎭","🌺","🥁","🏆","🎪"]
+  },
+  {
+    name: "Bengaluru Janapada Sangha",
+    art: "Dollu Kunitha",
+    emoji: "🥁",
+    gradClass: "g2",
+    district: "Bengaluru",
+    area: "Bengaluru Urban",
+    contact: "Venkatesh Murthy",
+    phone: "+91 80001 99000",
+    members: "18 Members",
+    rating: "4.8",
+    stars: "⭐⭐⭐⭐⭐",
+    events: "95 events",
+    desc: "Bengaluru's most sought-after Dollu Kunitha troupe, performing at corporate events, IT parks, and city festivals. Blends traditional art with modern stage management for urban audiences.",
+    equipment: ["18 Dollu drums", "LED costume lighting", "Professional sound system (5000W)", "Branded stage backdrop"],
+    gallery: ["🥁","🌆","🎭","🏆","🎶","⭐"]
+  }
+];
+
+let currentDistrict = 'All';
+let currentArt = 'All';
+let currentProfileIndex = 0;
+let fromSearch = false;
+
+function goHome() {
+  document.getElementById('splash').classList.remove('active');
+  document.getElementById('home-screen').classList.add('active');
+  renderResults();
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.screen').forEach(s => { if(s.id !== 'splash') s.classList.remove('active'); });
+  document.getElementById(tab + '-screen').classList.add('active');
+  if(tab === 'search') renderResults();
+}
+
+function openProfile(idx) {
+  fromSearch = document.getElementById('search-screen').classList.contains('active');
+  currentProfileIndex = idx;
+  const t = troupes[idx];
+  document.getElementById('profile-topbar-name').textContent = t.name;
+  document.getElementById('profile-cover').textContent = t.emoji;
+  document.getElementById('profile-cover').className = 'profile-cover troupe-img ' + (t.gradClass||'');
+  document.getElementById('profile-avatar').textContent = t.emoji;
+  document.getElementById('profile-name').textContent = t.name;
+  document.getElementById('profile-art').textContent = t.art;
+  document.getElementById('p-district').textContent = t.district;
+  document.getElementById('p-area').textContent = t.area;
+  document.getElementById('p-contact').textContent = t.contact;
+  document.getElementById('p-members').textContent = t.members;
+  document.getElementById('p-desc').textContent = t.desc;
+  document.getElementById('p-rating').textContent = t.rating;
+  document.getElementById('p-stars').textContent = t.stars;
+  document.getElementById('p-events').textContent = 'Based on ' + t.events;
+
+  const gallery = document.getElementById('p-gallery');
+  gallery.innerHTML = '';
+  const colors = ['#B5181B','#1A6B3C','#6B0C5E','#E8651A','#0C3B6B','#7B3F00'];
+  t.gallery.forEach((emoji, i) => {
+    const div = document.createElement('div');
+    div.className = 'gallery-item';
+    div.style.background = `linear-gradient(135deg, ${colors[i%colors.length]}cc, ${colors[(i+2)%colors.length]}cc)`;
+    div.textContent = emoji;
+    div.onclick = () => showToast('📸 Portfolio photo ' + (i+1));
+    gallery.appendChild(div);
+  });
+
+  const equip = document.getElementById('p-equip');
+  equip.innerHTML = '';
+  t.equipment.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'equip-item';
+    div.textContent = item;
+    equip.appendChild(div);
+  });
+
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('profile-screen').classList.add('active');
+}
+
+document.getElementById('profile-back').onclick = () => {
+  document.getElementById('profile-screen').classList.remove('active');
+  document.getElementById(fromSearch ? 'search-screen' : 'home-screen').classList.add('active');
+};
+
+function openBooking() {
+  const t = troupes[currentProfileIndex];
+  document.getElementById('booking-troupe-name').textContent = 'Booking request for: ' + t.name;
+  document.getElementById('profile-screen').classList.remove('active');
+  document.getElementById('booking-screen').classList.add('active');
+}
+
+function callTroupe() {
+  const t = troupes[currentProfileIndex];
+  showToast('📞 Calling ' + t.contact + ' – ' + t.phone);
+}
+
+document.getElementById('booking-back').onclick = () => {
+  document.getElementById('booking-screen').classList.remove('active');
+  document.getElementById('profile-screen').classList.add('active');
+};
+
+function submitBooking() {
+  const name = document.getElementById('b-name').value;
+  const event = document.getElementById('b-event').value;
+  const date = document.getElementById('b-date').value;
+  const loc = document.getElementById('b-location').value;
+  const phone = document.getElementById('b-phone').value;
+  if(!name || !event || !date || !loc || !phone) {
+    showToast('⚠️ Please fill all required fields');
+    return;
+  }
+  document.getElementById('success-overlay').classList.add('show');
+}
+
+function closeSuccess() {
+  document.getElementById('success-overlay').classList.remove('show');
+  ['b-name','b-location','b-phone','b-msg'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('b-event').value = '';
+  document.getElementById('b-date').value = '';
+  document.getElementById('booking-screen').classList.remove('active');
+  document.getElementById('home-screen').classList.add('active');
+}
+
+function setDistrictFilter(el, val) {
+  document.querySelectorAll('#district-filters .filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  currentDistrict = val;
+  renderResults();
+}
+
+function setArtFilter(el, val) {
+  document.querySelectorAll('#art-filters .filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  currentArt = val;
+  renderResults();
+}
+
+function filterByArt(art) {
+  currentArt = art;
+  document.querySelectorAll('#art-filters .filter-chip').forEach(c => {
+    c.classList.toggle('active', c.textContent === art || (art === 'All' && c.textContent === 'All Art Forms'));
+  });
+  switchTab('search');
+  renderResults();
+}
+
+function handleSearch(val) {
+  currentArt = 'All'; currentDistrict = 'All';
+  switchTab('search');
+  filterResults(val);
+}
+
+function filterResults(query) {
+  const q = query.toLowerCase();
+  const filtered = troupes.filter((t, i) => {
+    const matchDist = currentDistrict === 'All' || t.district === currentDistrict;
+    const matchArt = currentArt === 'All' || t.art === currentArt;
+    const matchQuery = !q || t.name.toLowerCase().includes(q) || t.art.toLowerCase().includes(q) || t.district.toLowerCase().includes(q);
+    return matchDist && matchArt && matchQuery;
+  });
+  renderResultCards(filtered);
+}
+
+function renderResults() { filterResults(''); }
+
+function renderResultCards(list) {
+  const container = document.getElementById('results-list');
+  if(list.length === 0) {
+    container.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted)"><div style="font-size:48px">🎭</div><div style="margin-top:12px;font-size:15px">No troupes found.<br>Try a different filter.</div></div>';
+    return;
+  }
+  container.innerHTML = list.map((t, i) => {
+    const idx = troupes.indexOf(t);
+    const colors = ['#B5181B','#1A6B3C','#6B0C5E','#E8651A','#0C3B6B','#7B3F00'];
+    return `<div class="result-card" onclick="openProfile(${idx})">
+      <div class="result-avatar" style="background:linear-gradient(135deg,${colors[idx%colors.length]},${colors[(idx+2)%colors.length]})">${t.emoji}</div>
+      <div class="result-info">
+        <div class="result-art">${t.art}</div>
+        <div class="result-name">${t.name}</div>
+        <div class="result-meta">
+          <span class="result-tag">📍 ${t.district}</span>
+          <span class="result-tag">👥 ${t.members}</span>
+        </div>
+        <div class="result-stars">${t.stars} ${t.rating}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+renderResults();
+</script>
+</body>
+</html>
